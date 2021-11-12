@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group 'com.itrex.java.lab'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //TODO add AOP dependency
+    implementation group: 'org.springframework', name: 'spring-aspects', version: '5.3.12'
+    implementation group: 'org.springframework', name: 'spring-aop', version: '5.3.12'
+
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.32'
+    implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.32'
+
+    implementation group: 'org.springframework', name: 'spring-core', version: '5.3.12'
+    implementation(group: 'org.springframework', name: 'spring-context', version: '5.3.12') {
+        exclude module: 'commons-logging'
+    }
+    testImplementation group: 'org.springframework', name: 'spring-test', version: '5.3.12'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+}
+
+test {
+    useJUnitPlatform()
+}
